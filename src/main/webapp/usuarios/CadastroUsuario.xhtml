@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Novo Usuario</ui:define>
+
+	<ui:define name="corpo">
+
+		<h1>Novo Usuario</h1>
+
+		<p:toolbar style="margin-top: 20px;">
+
+			<p:toolbarGroup>
+			
+				<p:button value="Novo" outcome="/usuarios/CadastroUsuario"/>
+				<p:commandButton value="Salvar" id="botaoSalvar"/>
+
+			</p:toolbarGroup>
+
+			<p:toolbarGroup align="right">
+			
+				<p:button value="pesquisa" outcome="/usuarios/PesquisaUsuario"/>
+			</p:toolbarGroup>
+
+		</p:toolbar>
+		
+		<p:panelGrid id="painel" columns="2" style="width: 100%; margin-top: 20px;" columnClasses="rotulo,campo">
+			
+			<p:outputLabel value="Nome" for="nome" />
+			<p:inputText id="nome" size="80" maxlength="80"/>
+			
+			<p:outputLabel value="e-mail" for="email"/>
+			<p:inputText id="email" size="50" maxlength="50" />
+			
+			<p:outputLabel value="Senha" for="senha"/>
+			<p:password id="senha" feedback="true" inline="true" />
+			
+			
+		
+		</p:panelGrid>
+		
+			<p:panelGrid columns="2">
+			<p:selectOneMenu style="margin-left:5px; margin-top:5px;">
+				<f:selectItem itemLabel="Administradores" />
+			</p:selectOneMenu>
+			
+			<p:commandButton value="Adicionar grupo" style=" margin-left:5px; "/>
+			
+
+		</p:panelGrid>
+		
+			
+			<p:dataTable id="clientesTable" value="#{pesquisaClienteBean.clientesFiltrados}" var="cliente"
+				style="margin-top: 20px;" emptyMessage="cliente não encontrado."
+					rows="2" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+					
+					<p:column headerText="Grupo">
+					
+						<h:outputText value="Auxiliares"/>
+					
+					</p:column>
+					
+					<p:column style="text-align: center; width:50px;" >
+					
+						<p:button icon="ui-icon-close" title="Remover"/>
+					
+					</p:column>
+					
+					
+			</p:dataTable>
+			
+
+	</ui:define>
+
+
+
+</ui:composition>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Pesquisa Usuário</ui:define>
+
+	<ui:define name="corpo">
+
+		<h:form>
+
+			<h1>Pesquisa Usuário</h1>
+
+			<p:toolbar style="margin-top: 20px;">
+
+				<p:toolbarGroup>
+
+					<p:commandButton value="Pesquisar" />
+
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+
+					<p:button value="Novo" outcome="/usuarios/CadastroUsuario" />
+				</p:toolbarGroup>
+
+			</p:toolbar>
+
+			<p:panelGrid id="painel" columns="2"
+				style="width: 100%; margin-top: 20px;" columnClasses="rotulo,campo">
+
+				<p:outputLabel value="Nome" for="nome"/>
+				<p:inputText id="nome" size="60" />
+				
+			</p:panelGrid>
+			
+			<p:dataTable id="clientesTable" value="#{pesquisaClienteBean.clientesFiltrados}" var="cliente"
+				style="margin-top: 20px;" emptyMessage="cliente não encontrado."
+					rows="20" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
+					
+					<p:column headerText="Nome">
+					
+						<h:outputText value="Supermercado João das Coves Ltda"/>
+					
+					</p:column>
+					
+					<p:column headerText="E-mail" >
+					
+						<h:outputText value="joaodas_coves@hotmail.com"/>
+					
+					</p:column>
+					
+					<p:column style="text-align: center; width:50px;" >
+					
+						<p:button icon="ui-icon-pencil" title="Editar"/>
+					
+					</p:column>
+					
+					<p:column style="text-align: center; width:50px;" >
+					
+						<p:button icon="ui-icon-close" title="Remover"/>
+					
+					</p:column>
+					
+					
+			</p:dataTable>
+			
+			
+
+		</h:form>
+	</ui:define>
+
+
+
+</ui:composition>
